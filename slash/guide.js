@@ -22,7 +22,7 @@ module.exports = {
                       },
                       {
                         "name": `/play`,
-                        "value": `Has 5 subcommands:\n->theboys will play a default playlist of songs featured in the show.\n->song will ask for a spotify URL which will play the requested song.\n->playlist will ask for a Spotify playlist URL, and it will automatically shuffle.\n->album will ask for a Spotify album URL, and it will shuffle.\n->search will ask for search terms to use, and play the first result. It's recommended that you default to this, and that you put the artist's name first if the song is not the top result.`
+                        "value": `Has 5 subcommands:\n->theboys will play a default playlist of songs featured in the show.\n->song will ask for a spotify URL which will play the requested song.\n->playlist will ask for a Spotify playlist URL, and it will automatically shuffle.\n->album will ask for a Spotify album URL, and it will shuffle.\n->search will ask for search terms to use, and play the first result. It's recommended that you default to this, and that you put the artist's name first if the song is not the top result. \nNote: if /play search returns a song restricted by SoundCloud Go+, you will need to use a spotify URL.`
                       },
                       {
                         "name": `/pause`,
