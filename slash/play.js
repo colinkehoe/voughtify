@@ -55,6 +55,11 @@ module.exports = {
                 .addStringOption((option) => 
                     option.setName("url").setDescription("The song's SoundCloud URL").setRequired(true)
                     )
+        )
+        .addSubcommand((subcommand) =>
+            subcommand
+                .setName("sterling")
+                .setDescription("Plays Sterling's theme song.")
         ),
 	run: async ({ client, interaction }) => {
 		if (!interaction.member.voice.channel) return interaction.editReply("You need to be in a VC to use this command!")
@@ -165,6 +170,21 @@ module.exports = {
             await queue.addTrack(song);
             embed
                 .setDescription(`**[${song.title}](${song.url})** has been added to the Queue.`)
+                .setThumbnail(song.thumbnail)
+                .setFooter({ text: `Duration: ${song.duration}`})
+        }
+        else if (interaction.options.getSubcommand() === "sterling") {
+            let url = process.env.STERLING;
+            const result = await client.player.search(url, {
+                requestedBy: interaction.user,
+                searchEngine: QueryType.SPOTIFY_SONG
+            });
+            if (result.length === 0)
+                return interaction.editReply("There was an error.");
+            const song = result.tracks[0];
+            await queue.addTrack(song);
+            embed
+                .setDescription(`**Sterling's theme song, [${song.title}](${song.url}),** has been added to the Queue.`)
                 .setThumbnail(song.thumbnail)
                 .setFooter({ text: `Duration: ${song.duration}`})
         }
