@@ -108,7 +108,7 @@ module.exports = {
             const song = result.tracks[0]
             await queue.addTrack(song)
             embed
-                .setDescription(`**[${song.title}](${song.url})** has been added to the Queue.`)
+                .setDescription(`**${song.author} -- [${song.title}](${song.url})** has been added to the Queue. \nRequested by <@${currentSong.requestedBy.id}>`)
                 .setThumbnail(song.thumbnail)
                 .setFooter({ text: `Duration: ${song.duration}`})
         }
@@ -206,7 +206,7 @@ module.exports = {
             const song = result.tracks[0];
             await queue.addTrack(song);
             embed
-                .setDescription(`**Sterling's theme song, [${song.title}](${song.url}),** has been added to the Queue.`)
+                .setDescription(`**Billy Joel -- [${song.title}](${song.url}),** has been added to the Queue.`)
                 .setThumbnail(song.thumbnail)
                 .setFooter({ text: `Duration: ${song.duration}`})
         }
