@@ -194,7 +194,7 @@ module.exports = {
                 .setThumbnail(song.thumbnail)
                 .setFooter({ text: `Duration: ${song.duration}`})
         }
-        else if (interaction.options.getSubbcommand() === "pressure")
+        else if (interaction.options.getSubcommand() === "pressure")
         {
             let url = process.env.PRESSURE;
             const result = await client.player.search(url, {
