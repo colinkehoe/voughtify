@@ -60,6 +60,11 @@ module.exports = {
             subcommand
                 .setName("sterling")
                 .setDescription("Plays Sterling's theme song.")
+        )
+        .addSubcommand((subcommand) => 
+            subcommand
+                .setName("pressure")
+                .setDescription("Plays Pressure by Billy Joel.")
         ),
 	run: async ({ client, interaction }) => {
 		if (!interaction.member.voice.channel) return interaction.editReply("You need to be in a VC to use this command!")
@@ -173,8 +178,25 @@ module.exports = {
                 .setThumbnail(song.thumbnail)
                 .setFooter({ text: `Duration: ${song.duration}`})
         }
-        else if (interaction.options.getSubcommand() === "sterling") {
+        else if (interaction.options.getSubcommand() === "sterling")
+        {
             let url = process.env.STERLING;
+            const result = await client.player.search(url, {
+                requestedBy: interaction.user,
+                searchEngine: QueryType.SPOTIFY_SONG
+            });
+            if (result.length === 0)
+                return interaction.editReply("There was an error.");
+            const song = result.tracks[0];
+            await queue.addTrack(song);
+            embed
+                .setDescription(`**Sterling's theme song, [${song.title}](${song.url}),** has been added to the Queue.`)
+                .setThumbnail(song.thumbnail)
+                .setFooter({ text: `Duration: ${song.duration}`})
+        }
+        else if (interaction.options.getSubbcommand() === "pressure")
+        {
+            let url = process.env.PRESSURE;
             const result = await client.player.search(url, {
                 requestedBy: interaction.user,
                 searchEngine: QueryType.SPOTIFY_SONG
