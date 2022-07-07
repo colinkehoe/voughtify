@@ -206,7 +206,7 @@ module.exports = {
             const song = result.tracks[0];
             await queue.addTrack(song);
             embed
-                .setDescription(`**Billy Joel -- [${song.title}](${song.url}),** has been added to the Queue.`)
+                .setDescription(`**Billy Joel -- [${song.title}](${song.url})** has been added to the Queue.`)
                 .setThumbnail(song.thumbnail)
                 .setFooter({ text: `Duration: ${song.duration}`})
         }
