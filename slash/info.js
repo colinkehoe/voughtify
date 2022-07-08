@@ -13,16 +13,17 @@ module.exports = {
             return await interaction.editReply('There are no songs in the queue!');
         
         let bar = queue.createProgressBar({
-            timecodes: true,
+            timecodes: false,
             queue: false,
             length: 19
         });
 
+        let timestamp = new PlayerTimestamp();
         const song = queue.current;
         await interaction.editReply({
             embeds: [new MessageEmbed()
                 .setThumbnail(song.thumbnail)
-                .setDescription(`Currently Playing [${song.title}](${song.url})\nBy ${song.author}\n \n` + bar)
+                .setDescription(`Currently Playing [${song.title}](${song.url})\nBy ${song.author}\n ${timestamp.current}/${timestamp.end}\n` + bar)
             ],
         });
     }
