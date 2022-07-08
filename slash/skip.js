@@ -22,7 +22,7 @@ module.exports = {
             ],
             embeds: [
                 new MessageEmbed()
-                    .setDescription(`Now playing: **${queue.current.author} -- ${queue.current.title}**`)
+                    .setDescription(`**${currentSong.author} -- ${currentSong.title}** has been skipped.\nNow playing: **${queue.current.author} -- ${queue.current.title}**`)
                     .setThumbnail(queue.current.thumbnail)
             ]
         });

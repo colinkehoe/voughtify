@@ -16,13 +16,13 @@ module.exports = {
         const trackNum = interaction.options.getNumber('tracknumber');
         if (trackNum > queue.tracks.length || trackNum < 0)
             return await interaction.editReply('Invalid track number');
-        const skippedTrack = queue.current;
+        const nextTrack = queue.tracks[trackNum - 1];
         queue.skipTo(trackNum - 1);
         await interaction.editReply({
             embeds: [
                 new MessageEmbed()
-                    .setDescription(`**${skippedTrack.author} -- ${skippedTrack.title}** has been skipped.\nNow playing: **${queue.current.author} -- ${queue.current.title}**`)
-                    .setThumbnail(queue.current.thumbnail)
+                    .setDescription(`Now playing: **${nextTrack.author} -- ${nextTrack.title}**`)
+                    .setThumbnail(nextTrack.thumbnail)
             ]
         });
     },
