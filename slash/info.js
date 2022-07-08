@@ -13,6 +13,7 @@ module.exports = {
             return await interaction.editReply('There are no songs in the queue!');
         
         let bar = queue.createProgressBar({
+            timecodes: true,
             queue: false,
             length: 19
         });
@@ -21,7 +22,7 @@ module.exports = {
         await interaction.editReply({
             embeds: [new MessageEmbed()
                 .setThumbnail(song.thumbnail)
-                .setDescription(`Currently Playing [${song.title}](${song.url})\nBy ${song.author}\n` + bar)
+                .setDescription(`Currently Playing [${song.title}](${song.url})\nBy ${song.author}\n \n` + bar)
                 .setFooter({ text: `Duration: ${song.duration}`})
             ],
         });
