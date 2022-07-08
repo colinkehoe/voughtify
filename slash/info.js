@@ -22,6 +22,7 @@ module.exports = {
             embeds: [new MessageEmbed()
                 .setThumbnail(song.thumbnail)
                 .setDescription(`Currently Playing [${song.title}](${song.url})\nBy ${song.author}\n` + bar)
+                .setFooter({ text: `Duration: ${song.duration}`})
             ],
         });
     }
