@@ -23,6 +23,7 @@ module.exports = {
                 new MessageEmbed()
                     .setDescription(`Now playing: **${nextTrack.author} -- ${nextTrack.title}**`)
                     .setThumbnail(nextTrack.thumbnail)
+                    .setFooter({ text: `Duration: ${nextTrack.duration}`})
             ]
         });
     },

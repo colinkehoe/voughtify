@@ -18,13 +18,9 @@ module.exports = {
         await interaction.editReply({
             embeds: [
                 new MessageEmbed()
-                    .setDescription(`${currentSong.title} has been skipped.`)
-                    .setThumbnail(currentSong.thumbnail)
-            ],
-            embeds: [
-                new MessageEmbed()
                     .setDescription(`**${currentSong.author} -- ${currentSong.title}** has been skipped.\nNow playing: **${nextTrack.author} -- ${nextTrack.title}**`)
                     .setThumbnail(queue.current.thumbnail)
+                    .setFooter({ text: `Duration: ${nextTrack.duration}`})
             ]
         });
     },
