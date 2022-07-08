@@ -19,6 +19,11 @@ module.exports = {
                 new MessageEmbed()
                     .setDescription(`${currentSong.title} has been skipped.`)
                     .setThumbnail(currentSong.thumbnail)
+            ],
+            embeds: [
+                new MessageEmbed()
+                    .setDescription(`Now playing: **${queue.current.author} -- ${queue.current.title}**`)
+                    .setThumbnail(queue.current.thumbnail)
             ]
         });
     },

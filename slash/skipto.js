@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -15,7 +16,14 @@ module.exports = {
         const trackNum = interaction.options.getNumber('tracknumber');
         if (trackNum > queue.tracks.length || trackNum < 0)
             return await interaction.editReply('Invalid track number');
+        const skippedTrack = queue.current;
         queue.skipTo(trackNum - 1);
-        await interaction.editReply(`Skipped ahead to ${trackNum}`);
+        await interaction.editReply({
+            embeds: [
+                new MessageEmbed()
+                    .setDescription(`**${skippedTrack.author} -- ${skippedTrack.title}** has been skipped.\nNow playing: **${queue.current.author} -- ${queue.current.title}**`)
+                    .setThumbnail(queue.current.thumbnail)
+            ]
+        });
     },
 }
