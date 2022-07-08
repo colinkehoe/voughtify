@@ -18,10 +18,11 @@ module.exports = {
             length: 19
         });
 
-        let timestamp = new PlayerTimestamp();
+        let timestamp = queue.getPlayerTimestamp();
         const song = queue.current;
         await interaction.editReply({
-            embeds: [new MessageEmbed()
+            embeds: [
+                new MessageEmbed()
                 .setThumbnail(song.thumbnail)
                 .setDescription(`Currently Playing [${song.title}](${song.url})\nBy ${song.author}\n ${timestamp.current}/${timestamp.end}\n` + bar)
             ],
