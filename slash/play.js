@@ -93,7 +93,7 @@ module.exports = {
             embed
                 .setDescription(`**${result.tracks.length} songs from [${playlist.title}](${playlist.url})** have been added to the Queue.`)
                 .setThumbnail(playlist.thumbnail)
-                .setFooter({ text: `Currently Playing: ${track.title} \n Duration: ${track.duration}`})
+                .setFooter({ text: `Currently Playing: ${track.title} \nDuration: ${track.duration}`})
         }
         else if (interaction.options.getSubcommand() === "song")
         {
@@ -108,7 +108,7 @@ module.exports = {
             const song = result.tracks[0]
             await queue.addTrack(song)
             embed
-                .setDescription(`**${song.author} -- [${song.title}](${song.url})** has been added to the Queue. \nRequested by <@${currentSong.requestedBy.id}>`)
+                .setDescription(`**${song.author} -- [${song.title}](${song.url})** has been added to the Queue. \nRequested by <@${song.requestedBy.id}>`)
                 .setThumbnail(song.thumbnail)
                 .setFooter({ text: `Duration: ${song.duration}`})
         }
@@ -144,7 +144,7 @@ module.exports = {
             embed
                 .setDescription(`**${result.tracks.length} songs from [${album.title}](${album.url})** have been added to the Queue.`)
                 .setThumbnail(album.thumbnail)
-                .setFooter({ text: `Currently Playing: ${track.title} \n Duration: ${track.duration}`})
+                .setFooter({ text: `Currently Playing: ${track.title} \nDuration: ${track.duration}`})
         }
         else if (interaction.options.getSubcommand() === "search")
         {
