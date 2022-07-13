@@ -148,19 +148,24 @@ module.exports = {
         }
         else if (interaction.options.getSubcommand() === "search")
         {
-            let url = interaction.options.getString("searchterms")
-            const result = await client.player.search(url, {
-                requestedBy: interaction.user,
-                searchEngine: QueryType.SOUNDCLOUD_SEARCH
-            });
-            if (result.tracks.length === 0)
-                return interaction.editReply("No results.")
-            const song = result.tracks[0]
-            await queue.addTrack(song)
-            embed
-                .setDescription(`**[${song.title}](${song.url})** has been added to the Queue.`)
-                .setThumbnail(song.thumbnail)
-                .setFooter({ text: `Duration: ${song.duration}`})
+            try {
+                let url = interaction.options.getString("searchterms")
+                const result = await client.player.search(url, {
+                    requestedBy: interaction.user,
+                    searchEngine: QueryType.SOUNDCLOUD_SEARCH
+                });
+                if (result.tracks.length === 0)
+                    return interaction.editReply("No results.")
+                const song = result.tracks[0]
+                await queue.addTrack(song)
+                embed
+                    .setDescription(`**[${song.title}](${song.url})** has been added to the Queue.`)
+                    .setThumbnail(song.thumbnail)
+                    .setFooter({ text: `Duration: ${song.duration}` })
+            } catch (error) {
+                console.log(error);
+                interaction.editReply("You can't play that song! Please try using a Spotify link instead.");
+            }
         }
         else if (interaction.options.getSubcommand() === "soundcloud")
         {
