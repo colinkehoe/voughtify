@@ -14,14 +14,20 @@ module.exports = {
         const currentSong = queue.current;
         const nextTrack = queue.tracks[0];
 
-        queue.skip();
-        await interaction.editReply({
-            embeds: [
-                new MessageEmbed()
-                    .setDescription(`**${currentSong.author} -- ${currentSong.title}** has been skipped.\nNow playing: **${nextTrack.author} -- ${nextTrack.title}**`)
-                    .setThumbnail(queue.current.thumbnail)
-                    .setFooter({ text: `Duration: ${nextTrack.duration}`})
-            ]
-        });
+        try {
+            queue.skip();
+            await interaction.editReply({
+                embeds: [
+                    new MessageEmbed()
+                        .setDescription(`**${currentSong.author} -- ${currentSong.title}** has been skipped.\nNow playing: **${nextTrack.author} -- ${nextTrack.title}**`)
+                        .setThumbnail(queue.current.thumbnail)
+                        .setFooter({ text: `Duration: ${nextTrack.duration}`})
+                ]
+            });
+        }
+        catch (error) {
+            console.log(error);
+            await interaction.editReply("There are no songs in the queue!");
+        }
     },
 }
