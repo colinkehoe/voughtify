@@ -21,7 +21,7 @@ module.exports = {
 
         let url = process.env.SCOTLAND_FOREVER_URL;
         let number = interaction.options.getNumber('number');
-        
+
         let result = await client.player.search(url, {
             requestedBy: interaction.user,
             searchEngine: QueryType.SPOTIFY_SONG
@@ -29,8 +29,8 @@ module.exports = {
         if (result.tracks.length === 0) {
             return interaction.editReply('There was an error!');
         }
+        const song = result.tracks[0];
         for (let i = 0; i < number; i++) {
-            let song = result.tracks[0];
             await queue.addTrack(song);
         }
         embed
