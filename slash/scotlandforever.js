@@ -6,7 +6,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('scotlandforever')
         .setDescription('Plays Scotland Forever a few times.')
-        .addNumberOption((option) => option.setName('number').setDescription('The number of times to play the song.').setRequired(false)),
+        .addNumberOption((option) => option.setName('number').setDescription('The number of times to play the song.').setRequired(true)),
     run: async ({ client, interaction }) => {
         if (!interaction.member.voice.channel) return interaction.editReply('You must be in a voice channel to use this command!');
 
