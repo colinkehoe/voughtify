@@ -19,7 +19,7 @@ Voughtify has a multitude of features, including:
 
 - Custom commands for server members!
 
-Voughtify is coded in Discord.js, using the discord-player library, which can be found at: 
+Voughtify is coded in JavaScript, using the Discord.js and Discord-player libraries, which can be found at: 
 
 - [Discord-js](https://github.com/discordjs/discord.js)
 
