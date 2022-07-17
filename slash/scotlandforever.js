@@ -6,7 +6,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('scotlandforever')
         .setDescription('Plays Scotland Forever a few times.')
-        .addNumberOption((option) => option.setName('number').setDescription('The number of times to play the song.').setRequired(true)),
+        .addNumberOption((option) => option.setName('number').setDescription('The number of times to play the song.').setRequired(false).setDefaultValue(1)),
     run: async ({ client, interaction }) => {
         if (!interaction.member.voice.channel) return interaction.editReply('You must be in a voice channel to use this command!');
 
@@ -27,11 +27,14 @@ module.exports = {
             searchEngine: QueryType.SPOTIFY_SONG
         });
         if (result.tracks.length === 0) {
-            return interaction.editReply('There was an error!');
+            return interaction.editReply("I wasn't able to grab the song from Spotify!");
         }
         const song = result.tracks[0];
-        for (let i = 0; i < number; i++) {
+
+        var i = 0;
+        while (i < number){
             await queue.addTrack(song);
+            i += 1;
         }
         embed
             .setDescription(`**${song.author} -- [${song.title}](${song.url})** has been added to the Queue. \nRequested by <@${song.requestedBy.id}>`)
