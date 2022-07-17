@@ -6,7 +6,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('scotlandforever')
         .setDescription('Plays Scotland Forever a few times.')
-        .addNumberOption((option) => option.setName('number').setDescription('The number of times to play the song.').setRequired(false).setDefaultValue(1)),
+        .addNumberOption((option) => option.setName('number').setDescription('The number of times to play the song.').setRequired(false)),
     run: async ({ client, interaction }) => {
         if (!interaction.member.voice.channel) return interaction.editReply('You must be in a voice channel to use this command!');
 
@@ -20,7 +20,7 @@ module.exports = {
         let embed = new MessageEmbed();
 
         let url = process.env.SCOTLAND_FOREVER_URL;
-        let number = interaction.options.getNumber('number');
+        let number = interaction.options.getNumber('number') ?? 1;
 
         let result = await client.player.search(url, {
             requestedBy: interaction.user,
@@ -33,7 +33,7 @@ module.exports = {
 
         var i = 0;
         while (i < number){
-            await queue.addTrack(song);
+            queue.addTrack(song);
             i += 1;
         }
         embed
