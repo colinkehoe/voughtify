@@ -17,7 +17,7 @@ const TOKEN = process.env.BOT_TOKEN;
 const LOAD_SLASH = process.argv[2] == 'load';
 
 const CLIENT_ID = process.env.CLIENT_ID;
-const GUILD_ID = process.env.GUILD_ID;
+const GUILD_ID = process.argv[3];
 
 const client = new Discord.Client( {
     intents: [
