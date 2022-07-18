@@ -10,7 +10,6 @@ const { Routes } = require('discord-api-types/v9');
 const fs = require('fs');
 const { Player } = require('discord-player');
 const dotenv = require('dotenv');
-const { CLIENT_RENEG_LIMIT } = require('tls');
 dotenv.config();
 
 const TOKEN = process.env.BOT_TOKEN;
