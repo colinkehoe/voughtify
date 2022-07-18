@@ -218,6 +218,6 @@ module.exports = {
         if (!queue.playing) await queue.play()
         await interaction.editReply({
             embeds: [embed]
-        })
+        });
 	},
 }

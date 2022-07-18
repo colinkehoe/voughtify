@@ -43,5 +43,7 @@ module.exports = {
             .setDescription(`**${song.author} -- [${song.title}](${song.url})** has been added to the Queue. \nRequested by <@${song.requestedBy.id}>`)
             .setThumbnail(song.thumbnail)
             .setFooter({ text: `Duration: ${song.duration}` });
+        
+        await interaction.editReply({ embeds: [embed] });
     }
 }
