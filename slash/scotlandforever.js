@@ -36,6 +36,9 @@ module.exports = {
             queue.addTrack(song);
             i += 1;
         }
+
+        if (!queue.playing) await queue.play();
+
         embed
             .setDescription(`**${song.author} -- [${song.title}](${song.url})** has been added to the Queue. \nRequested by <@${song.requestedBy.id}>`)
             .setThumbnail(song.thumbnail)
