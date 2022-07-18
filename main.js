@@ -44,6 +44,9 @@ for (const file of slashFiles) {
     if (LOAD_SLASH) commands.push(slashcmd.data.toJSON());
 }
 
+process.on("unhandledException", console.log);
+
+
 if (LOAD_SLASH) {
     const rest = new REST({ version: '9' }).setToken(TOKEN);
     console.log('Deploying slash commands...');
