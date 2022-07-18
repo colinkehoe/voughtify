@@ -4,7 +4,7 @@ require('discord-player/smoothVolume');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('info')
+        .setName('nowplaying')
         .setDescription('Displays information about the current song.'),
     run: async ({ client, interaction }) => {
         const queue = client.player.getQueue(interaction.guildId);
