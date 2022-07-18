@@ -22,7 +22,7 @@ module.exports = {
                       },
                       {
                         "name": `/play`,
-                        "value": `Has 5 subcommands:\n->theboys will play a default playlist of songs featured in the show.\n->song will ask for a spotify URL which will play the requested song.\n->playlist will ask for a Spotify playlist URL, and it will automatically shuffle.\n->album will ask for a Spotify album URL, and it will shuffle.\n->search will ask for search terms to use, and play the first result. It's recommended that you default to this, and that you put the artist's name first if the song is not the top result. \nNote: if /play search returns a song restricted by SoundCloud Go+, you will need to use a spotify URL.`
+                        "value": `Plays a song. Optionally, you can specify if you would like to shuffle the queue or change the volume.`
                       },
                       {
                         "name": `/pause`,
@@ -38,7 +38,7 @@ module.exports = {
                       },
                       {
                         "name": `/queue`,
-                        "value": `Displays songs in the current queue. Takes an optional number to display a specific page in the queue.`
+                        "value": `Displays songs in the current queue. Optionally, you can enter a number to view a certain page.`
                       },
                       {
                         "name": `/info`,
@@ -47,6 +47,14 @@ module.exports = {
                       {
                         "name": `/shuffle`,
                         "value": `Shuffles current selection of songs.`
+                      },
+                      {
+                        "name": `/volume`,
+                        "value": `Changes the volume of the current queue, using a number between 0 and 100.`
+                      },
+                      {
+                        "name": `/loop`,
+                        "value": `Loops the current song or queue, or begins autoplay.`
                       },
                       {
                         "name": `/skip and /skipto`,
