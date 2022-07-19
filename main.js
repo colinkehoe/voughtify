@@ -28,6 +28,7 @@ const client = new Discord.Client( {
 
 client.slashcommands = new Discord.Collection();
 client.player = new Player(client, {
+    initialVolume: 15,
     ytdlOptions: {
         quality: 'highestaudio',
         highWaterMark: 1 << 25
