@@ -223,8 +223,8 @@ module.exports = {
             queue.shuffle();
         }
 
-        if (!queue.playing) await queue.play();
         if (volume != 100) await queue.setVolume(volume);
+        if (!queue.playing) await queue.play();
         await interaction.editReply({
             embeds: [embed]
         });
