@@ -57,7 +57,7 @@ module.exports = {
         const currentFilter = queue.getFiltersEnabled();
 
         if (!queue) return await interaction.editReply('No queue found!');
-        if (!interaction.user.voice.channel) return await interaction.editReply('You must be in the voice channel to use this command!');
+        if (!interaction.member.voice.channel) return await interaction.editReply('You must be in the voice channel to use this command!');
 
         try {
             if (filter === 0) {
