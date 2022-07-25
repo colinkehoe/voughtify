@@ -112,9 +112,9 @@ module.exports = {
             const track = queue.current;
 
             embed 
-                .setTitle('Playlist Added to Queue')
-                .setDescription(`**${result.tracks.length} songs from [${playlist.title}](${playlist.url})** have been added to the Queue. \n**Playlist author:** [${playlist.author.name}](${playlist.author.url}) \n**Playlist description:** ${playlist.description}`)
-                .setThumbnail(playlist.thumbnail)
+                .setTitle('Album Added to Queue')
+                .setDescription(`**${result.tracks.length} songs from [${album.title}](${album.url})** have been added to the Queue.`)
+                .setThumbnail(album.thumbnail)
                 .setFooter({ text: `Currently playing: ${track.title} by ${track.author} \nDuration: ${track.duration}` });
         }
 //! If the url is a Youtube link, then explain that youtube is no longer supported by Music bots.
