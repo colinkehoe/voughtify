@@ -16,17 +16,16 @@ module.exports = {
             option
                 .setName('shuffle')
                 .addChoices(
-                    {
-                        name: 'on',
-                        description: 'Shuffle the songs.',
-                        value: 1
-                    },
-                    {
-                        name: 'off',
-                        description: "Don't shuffle the songs.",
-                        value: 0
-                    }
-                )
+                {
+                    name: 'on',
+                    description: 'Shuffle the songs.',
+                    value: 1
+                },
+                {
+                    name: 'off',
+                    description: "Don't shuffle the songs.",
+                    value: 0
+                })
                 .setDescription('Shuffle the songs.')
                 .setRequired(false)
         )
@@ -49,6 +48,7 @@ module.exports = {
 
         const url = interaction.options.getString('song');
         const volume = interaction.options.getNumber('volume') ?? 100;
+        if (volume != 100) await queue.setVolume(volume);
 
 //! If somehow the url doesn't exist, then return an error embed.
         if (!url) {
@@ -223,7 +223,6 @@ module.exports = {
             queue.shuffle();
         }
 
-        if (volume != 100) await queue.setVolume(volume);
         if (!queue.playing) await queue.play();
         await interaction.editReply({
             embeds: [embed]
