@@ -1,5 +1,10 @@
 # Voughtify
 
+**ATTENTION: 
+VOUGHTIFY HAS BEEN FOLDED INTO VOUGHT INTERNATIONAL.**
+
+Link to Vought International Repo can be found [here](https://github.com/colinkehoe/voughtintl-new)
+
 Welcome to the Voughtify Repo!
 
 Voughtify is a custom-designed music bot for the Discord server dedicated to the TV Show "The Boys". 
